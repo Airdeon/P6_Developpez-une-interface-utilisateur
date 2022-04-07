@@ -37,6 +37,7 @@ function get_api_json_data(url) {
             console.log("error")
         })
 }
+
 function fill_best_movie() {
     var data = get_api_json_data("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score")
     index = 1;
