@@ -5,13 +5,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" href="{% static 'images/favicon.png' %}">
+    <link rel="icon" href="images/favicon.png">
     <link rel="stylesheet" href="style.css">
 
     <script src="main.js"></script>
 
 </head>
 
-<header>
-    <h1>OC Movies</h1>
-</header>
+<body>
+    <header>
+
+        <div class="top_movie">
+            <img id="top_movie_image" class="top_movie_image" alt="Movies picture" src="">
+            <h1 id="movie_title" class="movie_title"></h1>
+        </div>
+
+    </header>
+
+    <div class="content">
+        <h2 class="category_title">Best rate</h2>
+        <div class="category">
+            <a class="button" onclick="slide('movie_bloc1', 'left')">&lt;</a>
+            <div class="slide">
+                <div id="movie_bloc1" class="movie_bloc"></div>
+            </div>
+            <a class="button" onclick="slide('movie_bloc1', 'right')">&gt;</a>
+        </div>
+
+        <div class="category">
+            <a class="button" onclick="slide('movie_bloc2', 'left')">&lt;</a>
+            <div class="slide">
+
+                <div id="movie_bloc2" class="movie_bloc"></div>
+                </a>
+            </div>
+            <a class="button" onclick="slide('movie_bloc2', 'right')">&gt;</a>
+        </div>
+
+        <div class="category">
+            <a class="button" onclick="slide('movie_bloc3', 'left')">&lt;</a>
+            <div class="slide">
+
+                <div id="movie_bloc3" class="movie_bloc"></div>
+                </a>
+            </div>
+            <a class="button" onclick="slide('movie_bloc3', 'right')">&gt;</a>
+        </div>
+
+        <div class="category">
+            <a class="button" onclick="slide('movie_bloc4', 'left')">&lt;</a>
+            <div class="slide">
+
+                <div id="movie_bloc4" class="movie_bloc"></div>
+                </a>
+            </div>
+            <a class="button" onclick="slide('movie_bloc4', 'right')">&gt;</a>
+        </div>
+
+
+    </div>
+    </div>
+</body>

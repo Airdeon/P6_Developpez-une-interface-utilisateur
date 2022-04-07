@@ -1,4 +1,23 @@
-.header {
-    height: 10em;
+header {
+    margin: 0;
+    height: 30em;
     background-color: $main_bg_color;
+    color: red;
+    overflow: hidden;
+
+    .movie_title {
+        top: 1em;
+        left: 1em;
+        position: absolute;
+        z-index: 2;
+        font-size: 5em;
+    }
+
+}
+
+#top_movie_image {
+    top: -50%;
+    position: relative;
+    width: 100%;
+    z-index: 1;
 }
