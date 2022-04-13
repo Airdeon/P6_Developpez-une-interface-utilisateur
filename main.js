@@ -1,10 +1,14 @@
 window.onload = function () {
-    get_best_movie();
-    fill_best_movie();
+    var base_url = "http://localhost:8000/api/v1/titles/"
+    get_best_movie(base_url);
+    fill_movie(base_url + "?sort_by=-imdb_score", "movie_best");
+    fill_movie(base_url + "?genre=Animation&sort_by=-imdb_score", "category_animation");
+    fill_movie(base_url + "?genre=Action&sort_by=-imdb_score", "category_action");
+    fill_movie(base_url + "?genre=Fantasy&sort_by=-imdb_score", "category_fantasy");
 };
-function get_best_movie() {
+function get_best_movie(base_url) {
     // Get movie form OCmovie API
-    url = "http://localhost:8000/api/v1/titles/?sort_by=-imdb_score";
+    url = base_url + "?sort_by=-imdb_score";
     fetch(url)
         .then(function (res) {
             if (res.ok) {
@@ -22,40 +26,53 @@ function get_best_movie() {
             console.log("error")
         })
 }
-function get_api_json_data(url) {
+async function get_api_json_data(url) {
+    return await new Promise((resolve, reject) =>{
     fetch(url)
-        .then(function (responce) {
-            if (responce.ok) {
-                return responce.json();
+        .then(function (response) {
+            if (response.ok) {
+                resolve(response.json());
             }
         })
-        .then(function (value) {
-            console.log(value);
-            return value;
-        })
+
         .catch(function (err) {
-            console.log("error")
+            reject(console.log("error"));
         })
+    })
 }
 
-function fill_best_movie() {
-    var data = get_api_json_data("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score")
-    index = 1;
+async function fill_movie(url, bloc) {
+    let data = await get_api_json_data(url);
+    if (bloc == "movie_best"){
+        var index = 1;
+        var number_of_movies = 8;
+    }
+    else{
+        var index = 0;
+        var number_of_movies = 7;
+    }
     console.log(data);
-    for (let film = 1; film < 8; film++) {
+
+    for (let film = index; film < number_of_movies; film++) {
         if (data.results[index] == undefined) {
-            url = data.next
-            console.log(url)
-            data = get_api_json_data(url)
+            url = data.next;
+            console.log(url);
+            data = await get_api_json_data(url);
+            index = 0
         }
-        console.log(data)
-        document.getElementById('movie_bloc1').innerHTML += "<a class='movie' onclick=''><img src='" + data.results[index].image_url + "'></img></a>"
+        console.log(bloc);
+        document.getElementById(bloc).innerHTML += "<button id='open_modal' class='movie' onclick='load_modal_info(" + data.url + ")'><img src='" + data.results[index].image_url + "'></img></button>";
         if (film < 8) {
-            document.getElementById('movie_bloc1').innerHTML += "<div class='space_between'></div>"
+            document.getElementById(bloc).innerHTML += "<div class='space_between'></div>";
         }
         index++;
     }
 }
+
+function load_modal_info(url){
+
+}
+
 
 function slide(id_field, direction) {
     var div = document.getElementById(id_field)

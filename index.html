@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
 
     <script src="main.js"></script>
+    <script src="modal.js"></script>
 
 </head>
 
@@ -22,44 +23,56 @@
 
     </header>
 
+    <!-- Modal -->
+    <div id="Modal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Some text in the Modal..</p>
+        </div>
+    </div>
+
     <div class="content">
         <h2 class="category_title">Best rate</h2>
         <div class="category">
-            <a class="button" onclick="slide('movie_bloc1', 'left')">&lt;</a>
+            <a class="button" onclick="slide('movie_best', 'left')">&lt;</a>
             <div class="slide">
-                <div id="movie_bloc1" class="movie_bloc"></div>
+                <div id="movie_best" class="movie_bloc"></div>
             </div>
-            <a class="button" onclick="slide('movie_bloc1', 'right')">&gt;</a>
+            <a class="button" onclick="slide('movie_best', 'right')">&gt;</a>
         </div>
 
+        <h2 class="category_title">Animation</h2>
         <div class="category">
-            <a class="button" onclick="slide('movie_bloc2', 'left')">&lt;</a>
+            <a class="button" onclick="slide('category_animation', 'left')">&lt;</a>
             <div class="slide">
 
-                <div id="movie_bloc2" class="movie_bloc"></div>
+                <div id="category_animation" class="movie_bloc"></div>
                 </a>
             </div>
-            <a class="button" onclick="slide('movie_bloc2', 'right')">&gt;</a>
+            <a class="button" onclick="slide('category_animation', 'right')">&gt;</a>
         </div>
 
+        <h2 class="category_title">Action</h2>
         <div class="category">
-            <a class="button" onclick="slide('movie_bloc3', 'left')">&lt;</a>
+            <a class="button" onclick="slide('category_action', 'left')">&lt;</a>
             <div class="slide">
 
-                <div id="movie_bloc3" class="movie_bloc"></div>
+                <div id="category_action" class="movie_bloc"></div>
                 </a>
             </div>
-            <a class="button" onclick="slide('movie_bloc3', 'right')">&gt;</a>
+            <a class="button" onclick="slide('category_action', 'right')">&gt;</a>
         </div>
 
+        <h2 class="category_title">Fantasy</h2>
         <div class="category">
-            <a class="button" onclick="slide('movie_bloc4', 'left')">&lt;</a>
+            <a class="button" onclick="slide('category_fantasy', 'left')">&lt;</a>
             <div class="slide">
 
-                <div id="movie_bloc4" class="movie_bloc"></div>
+                <div id="category_fantasy" class="movie_bloc"></div>
                 </a>
             </div>
-            <a class="button" onclick="slide('movie_bloc4', 'right')">&gt;</a>
+            <a class="button" onclick="slide('category_fantasy', 'right')">&gt;</a>
         </div>
 
 
