@@ -5,6 +5,17 @@ header {
     color: red;
     overflow: hidden;
 
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 6em;
+
+        .logo {
+            filter: brightness(0) invert(1);
+        }
+    }
+
     .movie_title {
         top: 1em;
         left: 1em;

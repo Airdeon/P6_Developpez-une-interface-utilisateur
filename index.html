@@ -9,12 +9,22 @@
     <link rel="stylesheet" href="style.css">
 
     <script src="main.js"></script>
-    <script src="modal.js"></script>
+
 
 </head>
 
 <body>
     <header>
+        <nav>
+            <img class="logo" src="logo.png" alt="logo">
+            <div>
+                <a href="#">Accueil</a>
+                <a href="#Best">Best rate</a>
+                <a href="#Animation">Animation</a>
+                <a href="#Action">Action</a>
+                <a href="#Fantasy">Fantasy</a>
+            </div>
+        </nav>
 
         <div class="top_movie">
             <img id="top_movie_image" class="top_movie_image" alt="Movies picture" src="">
@@ -26,14 +36,30 @@
     <!-- Modal -->
     <div id="Modal" class="modal">
         <!-- Modal content -->
-        <div class="modal-content">
+        <div class="modal_content">
+            <div class="description">
+
+                <h1 id="modal_title">Movies Title</h1>
+                <p id="genres"></p>
+                <p id="out_date"></p>
+                <p id="rated"></p>
+                <p id="IMDB_score"></p>
+                <p id="directors"></p>
+                <p id="actors"></p>
+                <p id="duration"></p>
+                <p id="origine"></p>
+                <p id="box_office_result"></p>
+                <p id="resume"></p>
+            </div>
+            <div id="modal_movie_picture">
+
+            </div>
             <span class="close">&times;</span>
-            <p>Some text in the Modal..</p>
         </div>
     </div>
 
     <div class="content">
-        <h2 class="category_title">Best rate</h2>
+        <h2 class="category_title" id="Best">Best rate</h2>
         <div class="category">
             <a class="button" onclick="slide('movie_best', 'left')">&lt;</a>
             <div class="slide">
@@ -42,7 +68,7 @@
             <a class="button" onclick="slide('movie_best', 'right')">&gt;</a>
         </div>
 
-        <h2 class="category_title">Animation</h2>
+        <h2 class="category_title" id="Animation">Animation</h2>
         <div class="category">
             <a class="button" onclick="slide('category_animation', 'left')">&lt;</a>
             <div class="slide">
@@ -53,7 +79,7 @@
             <a class="button" onclick="slide('category_animation', 'right')">&gt;</a>
         </div>
 
-        <h2 class="category_title">Action</h2>
+        <h2 class="category_title" id="Action">Action</h2>
         <div class="category">
             <a class="button" onclick="slide('category_action', 'left')">&lt;</a>
             <div class="slide">
@@ -64,7 +90,7 @@
             <a class="button" onclick="slide('category_action', 'right')">&gt;</a>
         </div>
 
-        <h2 class="category_title">Fantasy</h2>
+        <h2 class="category_title" id="Fantasy">Fantasy</h2>
         <div class="category">
             <a class="button" onclick="slide('category_fantasy', 'left')">&lt;</a>
             <div class="slide">
@@ -78,4 +104,5 @@
 
     </div>
     </div>
+    <script src="modal.js"></script>
 </body>

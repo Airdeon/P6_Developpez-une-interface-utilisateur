@@ -19,49 +19,35 @@ function get_best_movie(base_url) {
             image_url = value.results[0].image_url
             document.getElementById('top_movie_image').setAttribute("src", image_url)
             document.getElementById('movie_title').innerHTML = value.results[0].title
-
-            console.log(value);
         })
         .catch(function (err) {
             console.log("error")
         })
 }
-async function get_api_json_data(url) {
-    return await new Promise((resolve, reject) =>{
-    fetch(url)
-        .then(function (response) {
-            if (response.ok) {
-                resolve(response.json());
-            }
-        })
-
-        .catch(function (err) {
-            reject(console.log("error"));
-        })
-    })
+function get_data(url) {
+    return fetch(url)
+        .then(data => data.json())
+        .catch(error => alert("Erreur : " + error));
 }
 
 async function fill_movie(url, bloc) {
-    let data = await get_api_json_data(url);
-    if (bloc == "movie_best"){
+    let data = await get_data(url);
+    if (bloc == "movie_best") {
         var index = 1;
         var number_of_movies = 8;
     }
-    else{
+    else {
         var index = 0;
         var number_of_movies = 7;
     }
-    console.log(data);
 
     for (let film = index; film < number_of_movies; film++) {
         if (data.results[index] == undefined) {
             url = data.next;
-            console.log(url);
-            data = await get_api_json_data(url);
+            data = await get_data(url);
             index = 0
         }
-        console.log(bloc);
-        document.getElementById(bloc).innerHTML += "<button id='open_modal' class='movie' onclick='load_modal_info(" + data.url + ")'><img src='" + data.results[index].image_url + "'></img></button>";
+        document.getElementById(bloc).innerHTML += "<button id='open_modal' class='movie' onclick='load_modal_info(" + data.results[index].id + ")'><img src='" + data.results[index].image_url + "'></img></button>";
         if (film < 8) {
             document.getElementById(bloc).innerHTML += "<div class='space_between'></div>";
         }
@@ -69,7 +55,7 @@ async function fill_movie(url, bloc) {
     }
 }
 
-function load_modal_info(url){
+function load_modal_info(url) {
 
 }
 
