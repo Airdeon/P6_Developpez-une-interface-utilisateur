@@ -2,32 +2,65 @@ header {
     margin: 0;
     height: 30em;
     background-color: $main_bg_color;
-    color: red;
+    color: $text_color;
     overflow: hidden;
 
     nav {
+        z-index: 2;
         display: flex;
-        align-items: center;
         justify-content: space-between;
         height: 6em;
+        div{
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            a{
+                text-decoration: none;
+                text-shadow: 1px 1px 2px black;
+                margin: 20px;
+                color: $text_color;
+                font-size: 1.5em;
+                @media (max-width: 800px){
+                    font-size: 1em;
+                    margin: 10px;
+                }
+            }
+        }
 
         .logo {
+            z-index: 2;
             filter: brightness(0) invert(1);
+            margin-left: 30px;
         }
     }
 
-    .movie_title {
-        top: 1em;
-        left: 1em;
+    .top_movie_info {
+        top: 100px;
+        left: 100px;
         position: absolute;
         z-index: 2;
-        font-size: 5em;
+        h1{
+            font-size: 5em;
+            color: red;
+            text-shadow: 2px 3px 2px black;
+        }
+        a{
+            padding: 10px 20px 10px 20px;
+            border-radius: 5px;
+            font-size: 1.5em;
+            background-color: $second_bg_color;
+        }
+        p{
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #0000009c;
+        }
     }
 
 }
 
 #top_movie_image {
-    top: -50%;
+    top: -300px;
     position: relative;
     width: 100%;
     z-index: 1;

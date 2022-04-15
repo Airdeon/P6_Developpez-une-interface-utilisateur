@@ -1,16 +1,12 @@
 .modal {
   display: none;
-  /* Hidden by default */
   position: fixed;
-  /* Stay in place */
   z-index: 4;
-  /* Sit on top */
   left: 0;
   top: 0;
   width: 100%;
-  /* Full width */
+  height: 100%;
   overflow: auto;
-  /* Enable scroll if needed */
   background-color: $transparent_background;
 
   .modal_content {
@@ -18,13 +14,11 @@
     justify-content: space-between;
     background-color: $second_bg_color;
     margin: 15% auto;
-    /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
     color: $text_color;
 
-    /* Could be more or less, depending on screen size */
     .description {
       width: 50%;
     }
@@ -36,7 +30,7 @@
 
   .close {
     color: #aaa;
-    float: right;
+    float:right ;
     font-size: 28px;
     font-weight: bold;
 

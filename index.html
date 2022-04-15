@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" href="images/favicon.png">
+    <link rel="icon" href="favicon.png">
     <link rel="stylesheet" href="style.css">
 
     <script src="main.js"></script>
@@ -15,6 +15,7 @@
 
 <body>
     <header>
+        <!--top Menu-->
         <nav>
             <img class="logo" src="logo.png" alt="logo">
             <div>
@@ -26,9 +27,14 @@
             </div>
         </nav>
 
+        <!--best movie-->
         <div class="top_movie">
             <img id="top_movie_image" class="top_movie_image" alt="Movies picture" src="">
-            <h1 id="movie_title" class="movie_title"></h1>
+            <div id="top_movie_info" class="top_movie_info">
+                <h1 id="movie_title" class="movie_title"></h1>
+                <a id="more_info" class="more_info">More Info</a>
+                <p id="top_movie_description"></p>
+            </div>
         </div>
 
     </header>
@@ -58,6 +64,7 @@
         </div>
     </div>
 
+    <!-- Category -->
     <div class="content">
         <h2 class="category_title" id="Best">Best rate</h2>
         <div class="category">

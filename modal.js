@@ -7,11 +7,22 @@ var btn = document.getElementById("open_modal");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks on the button, open the modal
+function get_list(list){
+  let construct_string = " "
+  for (let value of list) {
+    construct_string += value;
+    construct_string += ", ";
+  }
+  construct_string = construct_string.substring(0, construct_string.length - 2);
+  return construct_string
+}
+
+// Open the modal
 async function load_modal_info(id) {
   let url = "http://localhost:8000/api/v1/titles/" + id;
   data = await get_data(url);
 
+  //get all element of the modal
   let title = document.getElementById('modal_title');
   let modal_movie_picture = document.getElementById("modal_movie_picture")
   let genres = document.getElementById("genres")
@@ -25,18 +36,14 @@ async function load_modal_info(id) {
   let box_office_result = document.getElementById("box_office_result")
   let resume = document.getElementById("resume")
 
+  // Title
   title.innerHTML = data.title;
+
+  // Image
   modal_movie_picture.innerHTML = "<img class=\"movie_picture\" src=\"" + data.image_url + "\">";
 
   // Genres
-  let string_genres = ""
-  for (let value of data.genres) {
-    string_genres += value;
-    string_genres += ", ";
-  }
-  console.log(string_genres);
-  string_genres = string_genres.substring(0, string_genres.length - 2);
-  genres.innerHTML = "<b>Genres : </b>" + string_genres;
+  genres.innerHTML = "<b>Genres : </b>" + get_list(data.genres);
 
   // Out date
   out_date.innerHTML = "<b>Out date : </b>" + data.date_published;
@@ -48,34 +55,16 @@ async function load_modal_info(id) {
   IMDB_score.innerHTML = "<b>IMDB Score : </b>" + data.imdb_score;
 
   // Directors
-  let string_directors = ""
-  for (let value of data.directors) {
-    string_directors += value;
-    string_directors += ", ";
-  }
-  string_directors = string_directors.substring(0, string_directors.length - 2);
-  directors.innerHTML = "<b>Directors : </b>" + string_directors;
+  directors.innerHTML = "<b>Directors : </b>" + get_list(data.directors);
 
   // Actors
-  let string_actors = ""
-  for (let value of data.actors) {
-    string_actors += value;
-    string_actors += ", ";
-  }
-  string_actors = string_actors.substring(0, string_actors.length - 2);
-  actors.innerHTML = "<b>Actors : </b>" + string_actors;
+  actors.innerHTML = "<b>Actors : </b>" + get_list(data.actors);
 
   // Duration
-  duration.innerHTML = "<b>Duration : </b>" + data.duration;
+  duration.innerHTML = "<b>Duration : </b>" + data.duration + " min";
 
   // Origines
-  let string_origines = ""
-  for (let value of data.countries) {
-    string_origines += value;
-    string_origines += ", ";
-  }
-  string_origines = string_origines.substring(0, string_origines.length - 2);
-  origine.innerHTML = "<b>Origines : </b>" + string_origines;
+  origine.innerHTML = "<b>Origines : </b>" + get_list(data.countries);
 
   // Box Office result
   box_office_result.innerHTML = "<b>Box Office result : </b>" + data.worldwide_gross_income;
@@ -83,13 +72,11 @@ async function load_modal_info(id) {
   // Resume
   resume.innerHTML = "<b>Description : </b>" + data.description;
 
-
   modal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
-  console.log('test')
   modal.style.display = "none";
 }
 

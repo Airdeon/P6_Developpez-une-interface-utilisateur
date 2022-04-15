@@ -6,30 +6,33 @@ window.onload = function () {
     fill_movie(base_url + "?genre=Action&sort_by=-imdb_score", "category_action");
     fill_movie(base_url + "?genre=Fantasy&sort_by=-imdb_score", "category_fantasy");
 };
-function get_best_movie(base_url) {
+async function get_best_movie(base_url) {
     // Get movie form OCmovie API
-    url = base_url + "?sort_by=-imdb_score";
-    fetch(url)
-        .then(function (res) {
-            if (res.ok) {
-                return res.json();
-            }
-        })
-        .then(function (value) {
-            image_url = value.results[0].image_url
-            document.getElementById('top_movie_image').setAttribute("src", image_url)
-            document.getElementById('movie_title').innerHTML = value.results[0].title
-        })
-        .catch(function (err) {
-            console.log("error")
-        })
+    let url = base_url + "?sort_by=-imdb_score";
+    let data = await get_data(url);
+
+    // transform url for best quality image
+    let image_url = data.results[0].image_url;
+    let index = image_url.indexOf('_V1_')
+    image_url = image_url.substring(0, index+4);
+    image_url += ".jpg"
+
+    // Set top movie info
+    document.getElementById('top_movie_image').setAttribute("src", image_url);
+    document.getElementById('movie_title').innerHTML = data.results[0].title;
+    data = await get_data(data.results[0].url);
+    document.getElementById('more_info').setAttribute("onclick", "load_modal_info(" + data.id + ")");
+    document.getElementById('top_movie_description').innerHTML = data.description;
 }
+
+// get json data available on "url"
 function get_data(url) {
     return fetch(url)
         .then(data => data.json())
         .catch(error => alert("Erreur : " + error));
 }
 
+// Set all category movies
 async function fill_movie(url, bloc) {
     let data = await get_data(url);
     if (bloc == "movie_best") {
@@ -54,12 +57,7 @@ async function fill_movie(url, bloc) {
         index++;
     }
 }
-
-function load_modal_info(url) {
-
-}
-
-
+// Slide movie Left and Right
 function slide(id_field, direction) {
     var div = document.getElementById(id_field)
     scrollvalue = 0;
